@@ -19,3 +19,12 @@ def app_url():
         servidor.shutdown()
         servidor.server_close()
         thread.join()
+
+
+@pytest.fixture
+def api(playwright):
+    contexto = playwright.request.new_context()
+    try:
+        yield contexto
+    finally:
+        contexto.dispose()

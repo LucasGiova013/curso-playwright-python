@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<title>Lista de tarefas</title>
+<h1>Lista de tarefas</h1>
+<form id="formulario">
+  <label for="tarefa">Nova tarefa</label>
+  <input id="tarefa" required>
+  <button type="submit">Adicionar</button>
+</form>
+<ul aria-label="Tarefas" id="tarefas"></ul>
+<script>
+document.querySelector('#formulario').addEventListener('submit', event => {
+  event.preventDefault();
+  const input = document.querySelector('#tarefa');
+  if (!input.value.trim()) return;
+  const item = document.createElement('li');
+  item.textContent = input.value.trim();
+  document.querySelector('#tarefas').appendChild(item);
+  input.value = '';
+});
+</script>
+</html>
